@@ -1,0 +1,34 @@
+medcine_id,brand,active_ingrident,price,availability
+1,dolo 650,paracetamol 650mg,26,yes
+1,crosin 650,paracetamol 650mg,17,yes
+1,calpol 650,paracetamol 650mg,27,yes
+1,paracip 650,paracetamol 650mg,6.30,yes
+2,azithral 500,azithromacyin 500mg,110,no
+2,Azee 500,azithromacyin 500mg,98,yes
+2,azicip 500,azithromacyin 500mg,37,no
+2,aziford 500mg,azithromacyin 500mg,60,yes
+2,azivent 500,azithromacyin 500mg,65.19,no
+2,zady 500,azithromacyin 500mg,101.91,no
+2,azro 500,azithromacyin 500mg,108.88,yes
+2,aziwok 500,azithromacyin 500mg,110.70,yes
+3,pantoicid 40,pantoprazole 40mg,172.5,yes
+3,pantosec 40,pantoprazole 40mg,70,yes
+3,pan 40,pantoprazole 40mg,169,yes
+3,topp 40,pantoprazole,24.75,no
+4,allegra 120,fexofenadine 120mg,240.33,yes
+4,fexodat 120,fexofenadine 120mg,46,yes
+4,histafree 120,fexofenadine 120mg,106.23,yes
+5,montair 10,montelukast 10mg,231.87,yes
+5,montek 10,montelukast 10mg,154.45,no
+6,shelcal 500, calcium + vitaminD3,130,yes
+6,cipcal ,calcium+ vitaminD3,43,yes
+7,becosules ,vitamin B complex,52,no
+7,neurobion forte ,vitamin B complex ,44,yes
+8,zifi 200,cafimime 200mg,91.90,yes
+8,taxim-o 200,cafimime 200mg,91.02,no
+8,cefi 200,cafimime 200mg,91,90,yes
+8,mahacef 200,cafimime 200mg,80,yes
+9,omez 20, omeprazole 20mg,53.87,yes
+9,omefol,omeprazole 20mg,22,no
+9,ocid 20,omeprazole 20mg,49,no
+10,gelusil,antacid,95,yes

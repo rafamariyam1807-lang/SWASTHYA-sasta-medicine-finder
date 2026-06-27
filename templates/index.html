@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Swasthya</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    padding:40px 20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:white;
+    font-size:3rem;
+    margin-bottom:30px;
+    text-shadow:2px 2px 10px rgba(0,0,0,0.2);
+}
+
+.search-box{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+    text-align:center;
+}
+
+input{
+    width:100%;
+    max-width:450px;
+    padding:15px;
+    border:2px solid #ddd;
+    border-radius:12px;
+    font-size:16px;
+    outline:none;
+}
+
+button{
+    margin-top:15px;
+    padding:14px 35px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#4facfe,#00c6ff);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.card{
+    background:white;
+    margin-top:30px;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* BADGES */
+.badge{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    margin-top:10px;
+}
+
+.success{
+    background:#d4edda;
+    color:#155724;
+}
+
+.warning{
+    background:#fff3cd;
+    color:#856404;
+}
+
+/* TIP BOX */
+.tip-box{
+    background:#e3f2fd;
+    padding:15px;
+    border-radius:12px;
+    margin-top:15px;
+}
+
+/* SAVE */
+.save{
+    margin-top:20px;
+    color:#00b894;
+    font-size:26px;
+    font-weight:700;
+    text-align:center;
+}
+
+table{
+    width:100%;
+    margin-top:15px;
+    border-collapse:collapse;
+}
+
+th{
+    background:#0984e3;
+    color:white;
+    padding:10px;
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #eee;
+}
+
+.cheapest{
+    background:linear-gradient(135deg,#84fab0,#8fd3f4);
+    padding:20px;
+    border-radius:15px;
+    margin-top:15px;
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+    color:white;
+    opacity:0.9;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>💊 Swasthya</h1>
+
+    <div class="search-box">
+
+        <form method="POST">
+
+            <input type="text" name="medicine" placeholder="Enter medicine name..." required>
+
+            <br>
+
+            <button type="submit">Search Medicine</button>
+
+        </form>
+
+        <p>Find affordable medicine alternatives instantly.</p>
+
+    </div>
+
+    {% if result %}
+
+    <div class="card">
+
+        <h2>Your Medicine</h2>
+
+        <p class="medicine-name">{{ result.brand }}</p>
+
+        <p class="price-tag">Price: ₹ {{ result.price }}</p>
+
+        <!-- AVAILABILITY -->
+        <span class="badge success">
+            Available: {{ result.availability }}
+        </span>
+
+        <h3>Active Ingredient</h3>
+        <p>{{ result.ingredient }}</p>
+
+        <!-- DYNAMIC HEALTH TIP -->
+        <div class="tip-box">
+            <h3>💡 Health Tip</h3>
+            <p>{{ result.tip }}</p>
+        </div>
+
+        <h3>Alternative Brands</h3>
+
+        <table>
+            <tr>
+                <th>Brand</th>
+                <th>Price (₹)</th>
+            </tr>
+
+            {% for item in result.alternatives %}
+            <tr>
+                <td>{{ item[1] }}</td>
+                <td>₹ {{ item[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div class="cheapest">
+
+            <h3>🏆 Cheapest Option</h3>
+
+            <p>{{ result.cheapest_brand }}</p>
+            <p>₹ {{ result.cheapest_price }}</p>
+
+        </div>
+
+        <div class="save">
+            You Save ₹ {{ result.saving }}
+        </div>
+
+        <p style="text-align:center;margin-top:10px;">
+            Switching saves <b>
+            {{ ((result.saving / result.price) * 100) | round(1) }}
+            %</b>
+        </p>
+
+        <!-- MONTHLY CALCULATOR -->
+        <div class="tip-box">
+
+            <h3>📊 Monthly Saving Calculator</h3>
+
+            <form method="POST">
+                <input type="hidden" name="medicine" value="{{ result.brand }}">
+                <input type="number" name="strips" placeholder="How many strips per month?" required>
+                <button type="submit">Calculate</button>
+            </form>
+
+            {% if monthly_data %}
+                <hr>
+                <p>Monthly Saving: ₹ {{ monthly_data.monthly_saving }}</p>
+                <p>Yearly Saving: ₹ {{ monthly_data.yearly_saving }}</p>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <div class="footer">
+        Made with ❤️ for affordable healthcare
+    </div>
+
+</div>
+
+</body>
+</html>
