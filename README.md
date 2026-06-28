@@ -1,4 +1,4 @@
-# 💊 Swasthya – Affordable Medicine Alternative Finder
+# Swasthya – Affordable Medicine Alternative Finder
 
 ## Overview
 
